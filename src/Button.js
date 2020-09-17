@@ -7,6 +7,7 @@ function Button() {
     const click1 = () => {
       inputFruit("딸기")
     }
+    
 
     const click2 = () => {
         inputFruit("바나나")
