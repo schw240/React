@@ -3,7 +3,8 @@ import 'App.css';
 import 'antd/dist/antd.css';
 import Count from 'Count';
 import Hello from 'Hello';
-import Button from 'Button';
+import Buttontest from 'Buttontest';
+import Welcome from 'Welcome';
 import "./Hello.css";
 
 
@@ -11,7 +12,7 @@ import "./Hello.css";
 function App() {
   return (
     <div>
-      <Button/>
+      <Buttontest/>
     </div>
   );
 }
