@@ -1,19 +1,62 @@
 import React from 'react';
 import 'App.css';
 import 'antd/dist/antd.css';
-import Count from 'Count';
-import Hello from 'Hello';
-import Buttontest from 'Buttontest';
-import Welcome from 'Welcome';
-import Students from 'Students';
-import Toggle from 'Toggle';
-import Statechange from 'Statechange';
-import Statechange2 from 'Statechange2';
-import Statechange3 from 'Statechange3';
+// import Count from 'Count';
+// import Hello from 'Hello';
+// import Buttontest from 'Buttontest';
+// import Welcome from 'Welcome';
+// import Students from 'Students';
+// import Toggle from 'Toggle';
+// import Statechange from 'Statechange';
+// import Statechange2 from 'Statechange2';
+// import Statechange3 from 'Statechange3';
 import Hovertest from 'Hovertest';
-import "./Hovertest.css";
-import "./Hello.css";
+// import Parenttest from 'Parenttest';
+import Gugudan from 'Gugudan';
+// import TodoList from 'TodoList';
+// import Add from 'Add';
+import TestEvent from 'TestEvent';
+import TodoList2 from 'TodoList2';
+import CountArray from 'CountArray';
+import Clock from 'Clock';
+import Master from 'Master';
+import ClockAdd from 'ClockAdd';
+import Game from 'Game';
+import './CssGame.css'
 
+function Parents()
+{
+  const [num, setNum] = React.useState(50)
+  const changeNumber = (number) => {
+    setNum(number);
+  }
+  return (
+    <>
+      {num}
+      <Child changeNumber={changeNumber} 
+             color={"red"}
+             number={10}
+             student={{name:'홍길동', age:35, address:'인천'}}
+      />
+    </>
+  )
+}
+function Child({changeNumber, color, number, student})
+{
+  // const x = {name:"홍길동", age:35};
+  // const {name, age} = x;  
+  console.log(number)
+  console.log(color)
+  console.log(student)
+  const click = () => {
+    changeNumber(10)
+  }
+  return(
+    <>
+    <button onClick={click}>클릭</button>
+    </>
+  )
+}
 
 function StateTest() {
   const [x1, setX1] = React.useState(10)
@@ -98,9 +141,22 @@ function Button() {
 }
 
 function App() {
+
+//   let click = () => {
+//     alert('이벤트발생')
+// }
+
   return (
     <div>
-      <Hovertest/>
+      {/* <TestEvent onClick={click}/> */}
+      {/* <Gugudan/> */}
+      {/* <TestEvent/> */}
+      {/* <Hovertest/>
+      <TodoList2/> */}
+      {/* <CountArray/> */}
+      {/* <Clock/> */}
+      {/* <Master/> */}
+      <Game/>
     </div>
   );
 }

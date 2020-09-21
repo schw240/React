@@ -1,0 +1,14 @@
+.message .boxs {
+    font-size: 50px;
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.boxs {
+    margin-top: 50px;
+}
+
+.boxs img {
+    cursor: pointer;
+}
