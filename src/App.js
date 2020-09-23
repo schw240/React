@@ -23,6 +23,13 @@ import Master from 'Master';
 import ClockAdd from 'ClockAdd';
 import Game from 'Game';
 import './CssGame.css'
+import TestReducer3 from 'TestReducer3';
+import ContextApiTest from 'ContextApiTest';
+import ContextApiTest2 from 'ContextApiTest2';
+import AxiosTest from 'AxiosTest';
+import AxiosTest2 from 'AxiosTest2';
+import RouterTest from 'RouterTest';
+import RouterTest2 from 'RouterTest2';
 
 function Parents()
 {
@@ -156,7 +163,11 @@ function App() {
       {/* <CountArray/> */}
       {/* <Clock/> */}
       {/* <Master/> */}
-      <Game/>
+      {/* <Game/> */}
+      {/* <TestReducer3/> */}
+      {/* <AxiosTest/> */}
+      {/* <AxiosTest2/> */}
+      <RouterTest/>
     </div>
   );
 }
