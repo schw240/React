@@ -1,0 +1,33 @@
+#header {
+    width: 270px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: 800;
+    color: skyblue;
+    text-align: center;
+
+}
+
+#menu {
+    float: left;
+    height: 100%;
+}
+
+#content {
+    box-sizing: border-box;
+    float: left;
+    padding: 50px;
+    margin-left: 50px;
+} 
+
+#add {
+    margin-left: 850px;
+    
+}
+
+.modal {
+    margin:0 auto;
+    margin: 30px;
+    margin-top: 5px;
+}
