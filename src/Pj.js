@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import 'App.css';
 import 'antd/dist/antd.css';
+import jwt from 'jwt-decode';
 import { Menu, Button, Input, DatePicker } from 'antd';
 import queryString from 'query-string';
 import API from 'Api';
@@ -12,14 +13,13 @@ import Favourite from 'pages/Favourite';
 import FavouriteGroup from 'pages/FavouriteGroup';
 import Todo from 'pages/Todo';
 import TodoGroup from 'pages/TodoGroup';
-import add from "images/add.jpg"
 import Login from 'account/Login';
-import { Modal, Space } from 'antd';
+import Empty from 'Empty';
+import LoginContext from 'account/Util'
 
 
 
 const { SubMenu } = Menu;
-const { confirm } = Modal;
 
 
 
@@ -40,13 +40,45 @@ export default function Pj() {
         console.log('click ', e);
       };
 
+    const [isLogin, setIsLogin] = React.useState(false);
 
+    React.useEffect(()=>{
+  
+      const token = window.localStorage.getItem("token")
+
+    
+
+      if (token!=null){
+  
+        const decode_token = jwt(token);
+        const now = new Date();
+        
+  
+        if(decode_token.exp * 1000 < now.getTime())
+        {        
+          console.log("기간이 지난토큰");
+          window.localStorage.removeItem("token");
+          setIsLogin(false);
+        }
+          
+  
+      }else{
+        setIsLogin(false);
+      }
+      
+    });
+
+    const logout = () => {
+      window.localStorage.removeItem("token");
+      setIsLogin(false);
+    }
 
       return (
         <>
         <div id="header">
             Todo Project
         </div>
+        <LoginContext.Provider value={{isLogin, setIsLogin}}>
         <div id="menu">
         <Menu
             onClick={handleClick}
@@ -121,6 +153,16 @@ export default function Pj() {
             </div>
             </Modal>
         </div> */}
+        <div>
+          { isLogin ? 
+            <div>
+              <a onClick={logout}>로그아웃</a>
+            </div> : 
+            <div>
+              <Link to="/login">로그인</Link>
+            </div>
+          }
+        </div>
         <div id="content">
           <Switch>
             <Route exact path="/" component={Favourite}/>
@@ -131,7 +173,9 @@ export default function Pj() {
             <Route path="/todogroup" component={TodoGroup}/>    
             <Route path="/Login" component={Login}/>        
           </Switch>
+          <Route path="/" component={Empty}/>
         </div>
+        </LoginContext.Provider>
         </>
       );
 }

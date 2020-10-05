@@ -15,6 +15,7 @@ import {
     Switch,
   } from 'antd';
 import axios from 'axios';
+import { getToken } from 'account/Util';
 
 export default function Todo(){
     const [group, setGroup] = React.useState([]);
@@ -49,7 +50,11 @@ export default function Todo(){
 
 
     React.useEffect(()=>{
-        axios.get("http://127.0.0.1:8000/blog/allTodo").then(res=>{
+        axios.get("http://127.0.0.1:8000/blog/allTodo", {
+            headers: {
+                Authorization: "JWT " + window.localStorage.getItem("token")//getToken()
+            }
+        }).then(res=>{
             console.log(res)
             const {data} = res;
             setTodos(prev => data);

@@ -61,7 +61,11 @@ export default function Favourite() {
 
     React.useEffect(()=>{
 
-        axios.get("http://127.0.0.1:8000/blog/favouritegroup/").then(res=>{
+        axios.get("http://127.0.0.1:8000/blog/favouritegroup/", {
+            headers: {
+                Authorization: "JWT " + window.localStorage.getItem("token")//getToken()
+            }
+        }).then(res=>{
             const {data} = res;
             setGroup(prev => data);
         })

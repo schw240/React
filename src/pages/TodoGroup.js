@@ -59,7 +59,11 @@ export default function TodoGroup() {
     }
 
     React.useEffect(()=>{
-        axios.get("http://127.0.0.1:8000/blog/todogroup/")
+        axios.get("http://127.0.0.1:8000/blog/todogroup/", {
+            headers: {
+                Authorization: "JWT " + window.localStorage.getItem("token")//getToken()
+            }
+        })
         .then(res => {
             const { data } = res;
             setTodo_groups(prev => data);
