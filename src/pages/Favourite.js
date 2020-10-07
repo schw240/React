@@ -45,8 +45,8 @@ export default function Favourite() {
     };
 
     const onFinish = e => {        
-        axios.post("http://127.0.0.1:8000/blog/favourite/", e).then(res=>{
-            return axios.get("http://127.0.0.1:8000/blog/favourite/")
+        axios.post("ec2-13-125-22-16.ap-northeast-2.compute.amazonaws.com:8000/blog/favourite/", e).then(res=>{
+            return axios.get("ec2-13-125-22-16.ap-northeast-2.compute.amazonaws.com:8000/blog/favourite/")
         }).then(
             res=>{
                 const {data} = res;
@@ -61,7 +61,7 @@ export default function Favourite() {
 
     React.useEffect(()=>{
 
-        axios.get("http://127.0.0.1:8000/blog/favouritegroup/", {
+        axios.get("ec2-13-125-22-16.ap-northeast-2.compute.amazonaws.com:8000/blog/favouritegroup/", {
             headers: {
                 Authorization: "JWT " + window.localStorage.getItem("token")//getToken()
             }
@@ -73,7 +73,7 @@ export default function Favourite() {
     },[])
 
     React.useEffect(()=>{
-        axios.get("http://127.0.0.1:8000/blog/favourite/")
+        axios.get("ec2-13-125-22-16.ap-northeast-2.compute.amazonaws.com:8000/blog/favourite/")
         .then(res => {
             const { data } = res;
             setFavourites(prev => data);
@@ -86,8 +86,8 @@ export default function Favourite() {
     
     const deleteFavourite = (seq) => {
 
-        axios.delete("http://127.0.0.1:8000/blog/favourite/" + seq +"/").then(res=>{
-            return axios.get("http://127.0.0.1:8000/blog/favourite/")
+        axios.delete("ec2-13-125-22-16.ap-northeast-2.compute.amazonaws.com:8000/blog/favourite/" + seq +"/").then(res=>{
+            return axios.get("ec2-13-125-22-16.ap-northeast-2.compute.amazonaws.com:8000/blog/favourite/")
         }).then(
             res=>{
                 const {data} = res;
